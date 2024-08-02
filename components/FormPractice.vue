@@ -164,28 +164,12 @@
                     placeholder="Please enter mobile number."
                     class="input-field"
                     dark
-
-                    
-
                     :error="!!errors.length"
                     :error-message="errors[0]"
                   />
                 </ValidationProvider>
               </div>
 
-              <!-- email address -->
-              <!-- <div class="col-12 col-sm-6">
-                <label for="" class="label">E-mail Address</label>
-                <q-input
-                  filled
-                  v-model="text"
-                  label="Please e-mail address."
-                  class="input-field"
-                  dark
-                />
-              </div> -->
-
-<!-- email --------------------------------------------------------->
               <div class="col-12 col-sm-6">
                 <ValidationProvider
                   name="E-mail"
@@ -252,7 +236,11 @@
 
               <!-- verification code -->
               <div class="col-12 col-sm-6">
-                  <ValidationProvider>
+                  <ValidationProvider
+                    name="code"
+                    rules="required" 
+                    v-slot="{ errors }"
+                  >
                     <label for="" class="label">Verification Code</label>
                     <div class="code-field">
                       <q-input
@@ -263,8 +251,12 @@
                         class="input-field"
                         dark
                         style="width: 218px"
+
+                        
+                          :error="!!errors.length"
+                          :error-message="errors[0]"
                       />
-                      <img src="~/assets/images/number.png" alt="" />
+                      <img src="~/assets/images/number.png" alt=""  style="margin-bottom: 18px;"/>
                     </div>
                   </ValidationProvider>
               </div>
@@ -289,7 +281,6 @@
 <script>
 // import veevalidate
 import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
-
 
 // validation for confirm password
 extend('password',  {
@@ -331,7 +322,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 /* font */
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@100..900&family=Merriweather&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
@@ -634,7 +625,7 @@ export default {
   }
 
   .form {
-    height: 1327px;
+    height: 1370px;
   }
 
   .q-stepper--contracted
