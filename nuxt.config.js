@@ -30,7 +30,10 @@ export default {
   ],
 
   // Plugins to run before rendering page
-  plugins: ["@/plugins/quasar"], // Add Quasar plugin
+  plugins: [
+    "@/plugins/quasar", // Add Quasar plugin
+    "@/plugins/vee-validate.js"  // Add VeeValidate plugin
+  ], 
   // Auto import components
   components: true,
 
