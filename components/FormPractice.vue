@@ -87,6 +87,7 @@
                   <label for="" class="label">Password</label>
                   <q-input
                     type="password"
+                    :type="isConfirmPwd ? 'password' : 'text'"
                     filled
                     v-model="password"
                     placeholder="Please enter password."
@@ -94,8 +95,17 @@
                     dark
                     :error="!!errors.length"
                     :error-message="errors[0]"
-    
-                />
+                    >
+
+                    <!-- iccon show pass -->
+                    <template v-slot:append>
+                      <q-icon
+                        :name="isConfirmPwd ? 'visibility_off' : 'visibility'"
+                        class="cursor-pointer"
+                        @click="isConfirmPwd = !isConfirmPwd"
+                      />
+                    </template>
+                  </q-input>
                 <!-- password error message -->
                 <!-- <span>{{ errors[0] }}</span> -->
                 </ValidationProvider>
@@ -498,7 +508,7 @@ export default {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14),
     0 3px 1px -2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
-  background: none;
+  background: none !important;
   box-shadow: none !important;
   
 }
@@ -507,19 +517,37 @@ export default {
 }
 
 .circle-icon {
-  color: #000000;
+  color: #000000 !important;
   
 }
+
 .q-stepper__dot {
   width: 50px;
   height: 50px;
   color: #999;
-  background: #000000;
+  background: #000000 !important;
   text-align: center;
   font-family: Inter;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
+}
+
+.q-stepper--contracted .q-stepper__dot {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    color: #999 !important;
+    background: #000000 !important;
+    text-align: center;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.q-stepper--contracted .q-stepper__header, .q-stepper--contracted .q-stepper__header--alternative-labels .q-stepper__tab {
+    border-bottom: none;
 }
 /* .stepper__dot {
     background: #EBA013;
@@ -532,7 +560,7 @@ export default {
   .q-stepper__header
   .q-stepper__tab:first-child
   .q-stepper__dot {
-  background: #eba013;
+  background: #eba013 !important;
   height: 70px;
   width: 70px;
   color: #FFF;
@@ -570,6 +598,8 @@ export default {
     background: #262626;
     border-radius: 5px;
 }
+
+
 
 
 /* mobile device */

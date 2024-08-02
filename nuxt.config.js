@@ -26,6 +26,7 @@ export default {
 
   // Global CSS
   css: [
+    '@quasar/extras/material-icons/material-icons.css', /// material icons from quasar
     "quasar/dist/quasar.css", // Import Quasar CSS
   ],
 
