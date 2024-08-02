@@ -185,14 +185,11 @@
                     class="input-field"
                     dark
                     :error="!!errors.length"
-                    :error-message="errors[0]"
-
-                    
+                    :error-message="errors[0]"     
                   />
                   <!-- <span style="color: red;">{{ errors[0] }}</span> -->
                 </ValidationProvider>
               </div>
-
 
               <!-- Identity number -->
               <div class="col-12 col-sm-6">
@@ -238,7 +235,7 @@
               <div class="col-12 col-sm-6">
                   <ValidationProvider
                     name="code"
-                    rules="required" 
+                    rules="required|is:2678" 
                     v-slot="{ errors }"
                   >
                     <label for="" class="label">Verification Code</label>
@@ -251,8 +248,7 @@
                         class="input-field"
                         dark
                         style="width: 218px"
-
-                        
+          
                           :error="!!errors.length"
                           :error-message="errors[0]"
                       />
@@ -311,6 +307,7 @@ export default {
     };
   },
   methods: {
+   
     onSubmit() {
       
       //Handle form submission
